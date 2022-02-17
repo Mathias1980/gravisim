@@ -1,0 +1,274 @@
+* {
+  font-family: 'Roboto', 'Lato', 'Open Sans', sans-serif;
+  font-size: 20px;
+  background-color: #416a59;
+  color: #F27922;
+}
+
+html, body {
+  height:100%;
+}
+
+header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 8%;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float:left;
+}
+
+li p {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 10px 16px;
+  text-decoration: none;
+  border-radius: 10px;
+}
+
+li p:hover {
+  background-color:#F27922;
+  cursor: pointer;
+}
+
+.animate {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.animate button {
+  padding: 5px 10px;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  color: white;
+  margin: 10px;
+  font-size: small;
+}
+
+.animate button:hover {
+  background-color: royalblue;
+  cursor: pointer;
+}
+
+#root {
+  height: 92%;
+}
+
+main {
+  display: flex;
+  align-items: stretch;
+  column-gap: 10px;
+  height: 98%;
+}
+
+canvas {
+  flex: 5 1 auto;
+  border: 1px solid #888;
+  background-color: white;
+  border-radius: 1em;
+  margin-left: 10px;
+}
+
+aside {
+  flex: 1 1 auto;
+  border: 1px solid #888;
+  background-color: rgb(168, 200, 230);
+  border-radius: 1em;
+  margin-right: 10px;
+  min-width: 250px;
+}
+
+.newBody {
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  background-color: rgb(168, 200, 230);
+  border-radius: 1em;
+}
+
+.newBody h2{
+  margin-left: 10px;
+  background-color: rgb(168, 200, 230);
+}
+
+.newBody label {
+  text-align: left;
+  font-size:  12px;
+  font-weight: bold;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  width: 210px;
+  background-color: rgb(168, 200, 230);
+}
+
+.newBody input {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  width: 210px;
+  color: black;
+  font-size: small;
+  margin-top: 5px;
+  margin-left: 10px;
+  box-sizing:content-box;
+}
+
+.newBody select {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  width: 214px;
+  color: black;
+  font-size: small;
+  margin-top: 5px;
+  margin-left: 10px;
+  box-sizing:content-box;
+}
+
+.newBody button {
+  padding: 5px 10px;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  color: white;
+  margin: 10px;
+}
+
+.newBody button:hover {
+  background-color: royalblue;
+  cursor: pointer;
+}
+
+.bodysets {
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  background-color: rgb(168, 200, 230);
+  border-radius: 1em;
+}
+
+.bodysets h2{
+  margin-left: 10px;
+  background-color: rgb(168, 200, 230);
+}
+
+.bodysets h2{
+  margin-left: 10px;
+  background-color: rgb(168, 200, 230);
+}
+
+.bodysets label {
+  text-align: left;
+  font-size:  12px;
+  font-weight: bold;
+  margin: 15px;
+  width: 210px;
+  background-color: rgb(168, 200, 230);
+}
+
+.bodysets input {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  width: 210px;
+  color: black;
+  font-size: small;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 15px;
+}
+
+.bodysets select {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  width: 210px;
+  color: black;
+  font-size: small;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 20px;
+}
+
+.bodysets button {
+  padding: 5px 10px;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  color: white;
+  margin: 10px;
+}
+
+.bodysets button:hover {
+  background-color: royalblue;
+  cursor: pointer;
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  background-color: rgb(168, 200, 230);
+  border-radius: 1em;
+}
+
+.settings h2{
+  margin-left: 10px;
+  background-color: rgb(168, 200, 230);
+}
+
+.settings label {
+  text-align: left;
+  font-size:  12px;
+  font-weight: bold;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 15px;
+  width: 210px;
+  background-color: rgb(168, 200, 230);
+}
+
+.settings input {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  width: 210px;
+  color: black;
+  font-size: small;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.settings select {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  width: 210px;
+  color: black;
+  font-size: small;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.settings button {
+  padding: 5px 10px;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  color: white;
+  margin: 10px;
+}
+
+.settings button:hover {
+  background-color: royalblue;
+  cursor: pointer;
+}
+
+.home {
+  font-family:  'Roboto', 'Lato', 'Open Sans', Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px;
+  background-color: rgb(168, 200, 230);
+  margin-left: 10px;
+}
