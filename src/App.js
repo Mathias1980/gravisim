@@ -14,11 +14,13 @@ import './App.css';
 import { Body } from './module/body';
 import { gravilib } from './module/gravilib';
 import {mllib} from './module/mllib'
+import * as Tone from 'tone'
 
 function App(props) {
 
   const _bodies = useRef([])
   const timestamp = useRef(Date.now());
+  const synth = useRef(new Tone.Synth().toDestination());
   const start = useRef();
   const ende = useRef();
 
@@ -50,7 +52,9 @@ function App(props) {
       for(let j = i + 1; j < bodies.length; j++){
         if(bodies[i].id != bodies[j].id){
           if(Gravity.collision(bodies[i], bodies[j], props.ratio.meter)){
-            Gravity.collisionReaction(bodies[i],bodies[j]);
+            let impulse = Gravity.collisionReaction(bodies[i],bodies[j]);
+            synth.current.volume.value = -20 + Math.min(impulse || 0, 40);
+            synth.current.triggerAttackRelease("C4", "32n");
           }
         }
       }
@@ -215,9 +219,18 @@ const loadObjects = () =>{
                 const newRatio = gravilib.zoom.find(el => el.id == props.ratio.id - 1);
                 scalePosition(props.ratio.meter/newRatio.meter);
                 props.setRatio(newRatio)}}}>+</button>
+            <button onClick={() => {
+              const synth = new Tone.Synth().toDestination();
+              const now = Tone.now()
+              gravilib.notes.C.forEach((el, i) => synth.triggerAttackRelease(el, "8n", now + i))
+              
+                }}>Tone</button>
           </div>
           <div className="animate">
-            <button onClick={props.start}>{String.fromCodePoint('0x23F5')}</button>
+            <button onClick={() => {
+              Tone.start();
+              props.start();
+            }}>{String.fromCodePoint('0x23F5')}</button>
             <button onClick={props.stop}>{String.fromCodePoint('0x23F8')}</button>
             <button onClick={clear}>{String.fromCodePoint('0x27F3')}</button>
           </div>

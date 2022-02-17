@@ -96,10 +96,12 @@ const collisionReaction = (obj1, obj2) => {
     if (speed >= 0){
         speed *= Math.min(obj1.restitution, obj2.restitution);
         let impulse = 2 * speed / (obj1.mass + obj2.mass);
+        //console.log(impulse * 10e+11);
         obj1.vel.x -= (impulse * obj2.mass * vCollisionNorm.x);
         obj1.vel.y -= (impulse * obj2.mass * vCollisionNorm.y);
         obj2.vel.x += (impulse * obj1.mass * vCollisionNorm.x);
         obj2.vel.y += (impulse * obj1.mass * vCollisionNorm.y);
+        return impulse * 10e+8;
     }
 }
 
