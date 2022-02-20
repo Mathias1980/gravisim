@@ -21,12 +21,33 @@ function App(props) {
   const _bodies = useRef([])
   const timestamp = useRef(Date.now());
   const synth = useRef(new Tone.Synth().toDestination());
-  const start = useRef();
-  const ende = useRef();
-
+  const visitor = useRef({});
   
   useEffect(() => {
     props.getObjects();
+    fetch("https://ipapi.co/json/")
+      .then(res => res.json())
+      .then((resJson=>{
+        visitor.current['timestamp'] = new Date().toLocaleString();
+        visitor.current['connection'] = {};
+        visitor.current['connection']['downlink'] = navigator.connection.downlink;
+        visitor.current['connection']['effectiveType'] = navigator.connection.effectiveType;
+        visitor.current['connection']['rtt'] = navigator.connection.rtt;
+        visitor.current['language'] = navigator.language;
+        visitor.current['platform'] = navigator.platform;
+        visitor.current['appVersion'] = navigator.appVersion;
+        visitor.current['mobile'] = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ? true : false;
+        visitor.current['screen'] = {};
+        visitor.current['screen']['width'] = window.screen.width;
+        visitor.current['screen']['height'] = window.screen.height;
+        visitor.current['window'] = {};
+        visitor.current['window']['width'] = window.innerWidth;
+        visitor.current['window']['height'] = window.innerHeight;
+        visitor.current['city'] = resJson.city;
+        visitor.current['ip'] = resJson.ip;
+        visitor.current['org'] = resJson.org;
+        props.mailVisitor(visitor.current)
+      }))
   }, []) 
 
   const draw = (ctx, secondsPassed) => {  
@@ -53,8 +74,10 @@ function App(props) {
         if(bodies[i].id != bodies[j].id){
           if(Gravity.collision(bodies[i], bodies[j], props.ratio.meter)){
             let impulse = Gravity.collisionReaction(bodies[i],bodies[j]);
-            synth.current.volume.value = -20 + Math.min(impulse || 0, 40);
-            synth.current.triggerAttackRelease("C4", "32n");
+            if(props.setting.sound){
+              synth.current.volume.value = -20 + Math.min(impulse || 0, 40);
+              synth.current.triggerAttackRelease("C4", "32n");
+            }
           }
         }
       }

@@ -21,6 +21,9 @@ function Settings(props) {
             <label>Label:
                 <input type="checkbox" onChange={props.setSetting} checked={props.setting.label} name="label"/>
             </label>
+            <label>Sound:
+                <input type="checkbox" onChange={props.setSetting} checked={props.setting.sound} name="sound"/>
+            </label>
             <label>Schweif:
                 <input type="checkbox" onChange={props.setSetting} checked={props.setting.tail} name="tail"/>
             </label>

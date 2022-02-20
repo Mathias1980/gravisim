@@ -36,6 +36,11 @@ const mapDispatchToProps = (dispatch) => {
                     dispatch({type: "GET_OBJECTS", payload: response.data})
                 })
         })},
+        mailVisitor: (visitor) => { dispatch(() => {
+            axios.post(BASE_URL+"/objects/mail", visitor)
+                .then((response) => {
+                })
+        })},
         setSetting: (event) => { dispatch({type: "SET_SETTING", payload: event}) },
         setRatio: (ratio) => { dispatch({type: "SET_RATIO", payload: ratio}) }
     }

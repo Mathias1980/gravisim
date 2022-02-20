@@ -41,6 +41,7 @@ const initState = {
 
   setting: {
     label: false,
+    sound: false,
     G: 6.67430e-11,
     realtime: true,
     timespeed: 1,
